@@ -1,24 +1,19 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://todo_db_dw78_user:3l5QSeqfmqg30rfZmAaOyTQ7gdygRRcv@dpg-d4voahmmcj7s73dr2e90-a.oregon-postgres.render.com/todo_db_dw78")
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
 
-# Cargar variables de entorno
-load_dotenv()
-
-SQLALCHEMY_DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://localhost:5432/todo_db"  # URL local para desarrollo
-)
-
-# Crear el engine
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
+    DATABASE_URL,
     pool_pre_ping=True,
     pool_recycle=3600
 )
-
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
