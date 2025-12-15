@@ -1,6 +1,8 @@
-fastapi==0.104.1
-uvicorn==0.24.0
-sqlalchemy==2.0.23
-pymysql==1.1.0
-pydantic==2.5.3
-python-dotenv==1.0.0
+--only-binary :all:
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+sqlalchemy==2.0.36
+pymysql==1.1.1
+pydantic==2.10.0
+python-dotenv==1.0.1
+cryptography==41.0.7
